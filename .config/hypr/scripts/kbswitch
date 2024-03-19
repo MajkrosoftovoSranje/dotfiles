@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+kbname="royuan-akko-multi-modes-keyboard-b"
+hyprctl switchxkblayout "$kbname" next
+kblay=$(hyprctl -j devices | jq '.keyboards' | jq '.[] | select (.name == '\"$kbname\"')' | awk -F '"' '{if ($2=="active_keymap") print $4}')
+dunstify "t1" -i ~/.config/dunst/icons/keyboard.svg -a "$kblay" -r 91190 -t 800

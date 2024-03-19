@@ -1,0 +1,50 @@
+#!/bin/sh
+
+# flags
+alias su='su -s /bin/zsh'
+alias ls="eza -a --icons --group-directories-first"
+alias ll="eza -lah --icons --group-directories-first"
+alias grep="grep --color=always"
+alias fzfp='fzf --preview="bat {} --color=always"'
+
+# privilege
+alias poweroff="doas /sbin/poweroff"
+alias reboot="doas /sbin/reboot"
+
+# weather
+alias weather='curl -s wttr.in | head -7 && printf "\n"'
+alias danas='curl -s wttr.in | sed -e "1,7d;17q"'
+alias sutra='curl -s wttr.in | sed -e "1,17d;27q"'
+alias moon='curl -s wttr.in/Moon | head -n -1'
+
+# shortcuts
+alias cdrun='cd /run/media/luka'
+alias upd='distrobox-upgrade --all; flatpak update -y; doas su -c "emerge --sync && emerge -aquDN @world && emerge -ac"'
+alias updu='distrobox-upgrade --all; flatpak update -y'
+alias updc='~/.local/bin/conty_lite.sh -u'
+alias wolg='doas ethtool -s enp3s0 wol g'
+alias hugepage='echo "always" | doas tee /sys/kernel/mm/transparent_hugepage/enabled'
+alias nohugepage='echo "madvise" | doas tee /sys/kernel/mm/transparent_hugepage/enabled'
+alias pkgfzf="equery l '*' | fzf"
+alias worldfzf='cat /var/lib/portage/world | fzf'
+emergefzf() { equery l -po -F '$category/$name' '*' | uniq | fzf --preview="equery meta {} && printf \"Use Flags:\n\" && equery uses {} && printf \"Dependencies:\n\" && equery depgraph {}"}
+
+# navigation
+alias ..='cd ..'
+alias ...='cd ../..'
+alias .3='cd ../../..'
+alias .4='cd ../../../..'
+
+# short
+alias v="$EDITOR"
+alias dv="doas $EDITOR"
+alias l="eza --icons --group-directories-first"
+#alias c='clear'
+alias q='exit'
+alias t='tmux'
+alias n='clear && fastfetch -c main.jsonc --logo-type chafa -l "~/Pictures/gentoo.png"'
+alias p='pokemon-colorscripts -r 1,2,3,4 --no-title'
+alias c='clear; p'
+alias yt="ytfzf -c S --fancy-subs --sort-by=upload_date"
+alias yt-s="ytfzf"
+alias tv="~/.config/tofi/twitch"

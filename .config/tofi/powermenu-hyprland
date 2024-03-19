@@ -1,0 +1,34 @@
+#!/usr/bin/env sh
+
+# Options
+shutdown=' Shutdown'
+reboot=' Reboot'
+lock=' Lock'
+suspend=' Suspend'
+logout='󰍃 Logout'
+
+# CMDs
+uptime="`uptime -p | sed -e 's/up //g'`"
+
+# Run tofi
+runtofi() {
+    printf "$shutdown\n$reboot\n$lock\n$logout\n$suspend" | tofi --prompt-text=" Uptime: $uptime" --hide-input=true --hidden-character="" --font=/usr/share/fonts/JetBrains\ Mono\ Nerd\ Font/JetBrains\ Mono\ Nerd\ Font\ Bold.ttf --padding-top=8
+}
+
+# Execute
+case $(runtofi) in
+    $shutdown)
+        doas /sbin/poweroff
+        ;;
+    $reboot)
+        doas /sbin/reboot
+        ;;
+    $lock)
+        swaylock -f
+        ;;
+    $suspend)
+        loginctl suspend
+        ;;
+    $logout)
+        hyprctl dispatch exit
+esac

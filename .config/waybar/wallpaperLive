@@ -1,0 +1,11 @@
+#!/bin/sh
+
+#if [ `ps -ef | grep -c mpvpaper` > 1 ]; then
+    killall mpvpaper
+#fi
+
+#if [ `ps -ef | grep -c swaybg` > 1 ]; then
+    killall swaybg
+#fi
+
+mpvpaper -o "--vo=libmpv --loop --aid=no" HDMI-A-1 ~/Videos/Watchtower.mp4

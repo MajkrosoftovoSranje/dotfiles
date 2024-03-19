@@ -1,0 +1,7 @@
+[core]
+	compression = 0
+[user]
+	name = Gentoo Yorkie
+	email = gentooyorkie@cock.li
+[credential]
+	helper = store --file /home/luka/.config/git/credentials	

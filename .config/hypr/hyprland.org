@@ -1,0 +1,367 @@
+#+TITLE: Hyprland Configuration File
+#+PROPERTY: header-args :tangle hyprland.conf
+
+* Display
+#+begin_src hyprlang
+monitor=,preferred,auto,1
+#monitor=,highrr,auto,1
+### TV
+#monitor=HDMI-A-1,3840x2160@60,auto,2
+#+end_src
+
+* Colors
+** Catppuccin
+#+begin_src hyprlang
+$rosewaterAlpha = f5e0dc
+$flamingoAlpha  = f2cdcd
+$pinkAlpha      = f5c2e7
+$mauveAlpha     = cba6f7
+$redAlpha       = f38ba8
+$maroonAlpha    = eba0ac
+$peachAlpha     = fab387
+$yellowAlpha    = f9e2af
+$greenAlpha     = a6e3a1
+$tealAlpha      = 94e2d5
+$skyAlpha       = 89dceb
+$sapphireAlpha  = 74c7ec
+$blueAlpha      = 89b4fa
+$lavenderAlpha  = b4befe
+
+$textAlpha      = cdd6f4
+$subtext1Alpha  = bac2de
+$subtext0Alpha  = a6adc8
+
+$overlay2Alpha  = 9399b2
+$overlay1Alpha  = 7f849c
+$overlay0Alpha  = 6c7086
+
+$surface2Alpha  = 585b70
+$surface1Alpha  = 45475a
+$surface0Alpha  = 313244
+
+$baseAlpha      = 1e1e2e
+$mantleAlpha    = 181825
+$crustAlpha     = 11111b
+
+$rosewater = 0xfff5e0dc
+$flamingo  = 0xfff2cdcd
+$pink      = 0xfff5c2e7
+$mauve     = 0xffcba6f7
+$red       = 0xfff38ba8
+$maroon    = 0xffeba0ac
+$peach     = 0xfffab387
+$yellow    = 0xfff9e2af
+$green     = 0xffa6e3a1
+$teal      = 0xff94e2d5
+$sky       = 0xff89dceb
+$sapphire  = 0xff74c7ec
+$blue      = 0xff89b4fa
+$lavender  = 0xffb4befe
+
+$text      = 0xffcdd6f4
+$subtext1  = 0xffbac2de
+$subtext0  = 0xffa6adc8
+
+$overlay2  = 0xff9399b2
+$overlay1  = 0xff7f849c
+$overlay0  = 0xff6c7086
+
+$surface2  = 0xff585b70
+$surface1  = 0xff45475a
+$surface0  = 0xff313244
+
+$base      = 0xff1e1e2e
+$mantle    = 0xff181825
+$crust     = 0xff11111b
+#+end_src
+
+* Environment Variables
+#+begin_src hyprlang
+$SCRIPTS = ~/.config/hypr/scripts
+env = XDG_CURRENT_DESKTOP, Hyprland
+env = XDG_SESSION_TYPE, wayland
+env = XDG_SESSION_DESKTOP, Hyprland
+env = GTK_THEME, Catppuccin-Mocha-Standard-Lavender-Dark:dark
+env = gtkMode, dark
+env = XCURSOR_SIZE, 26
+#+end_src
+
+* Hyprland XDG Portal
+#+begin_src hyprlang
+#exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+#exec-once = ~/.config/hypr/xdg-portal-hyprland
+#+end_src
+
+* Exec on startup
+** Font
+#+begin_src hyprlang
+exec = gsettings set org.gnome.desktop.interface font-name 'NotoSans 11'
+#+end_src
+** Sound
+#+begin_src hyprlang
+exec-once = gentoo-pipewire-launcher
+#+end_src
+** Cursor
+#+begin_src hyprlang
+exec-once = hyprctl setcursor BreezeX-Black 26
+exec-once = gsettings set org.gnome.desktop.interface cursor-theme BreezeX-Black
+#+end_src
+** Wallpaper
+#+begin_src hyprlang
+#exec-once = hyprpaper
+exec-once = swww init
+bind = SUPER, F4, exec, swww img -t none ~/Pictures/Wallpapers/02.png
+#exec-once = mpvpaper -o "--vo=libmpv --loop --aid=no" HDMI-A-1 ~/Videos/Watchtower.mp4 &
+#+end_src
+** Status Bar
+#+begin_src hyprlang
+exec-once = LANG=C gBar bar 0
+#exec-once = waybar &
+#+end_src
+** Foot server
+#+begin_src hyprlang
+exec-once = foot --server
+#+end_src
+** Clipboard
+#+begin_src hyprlang
+exec-once = wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman.json"
+#+end_src
+** Automount
+#+begin_src hyprlang
+exec-once = udiskie
+#+end_src
+** Night Light
+#+begin_src hyprlang
+exec-once = wlsunset -l 44.8 -L 20.5
+#+end_src
+
+* Input
+#+begin_src hyprlang
+input {
+    kb_layout = us,rs,rs
+    kb_variant = ,latinyz,yz
+    kb_model =
+    #kb_options = grp:alt_shift_toggle
+    kb_rules =
+
+    accel_profile = flat
+    sensitivity = -0.1
+
+    follow_mouse = 1
+}
+#+end_src
+
+* General
+#+begin_src hyprlang
+general {
+    gaps_in = 6
+    gaps_out = 12
+    border_size = 2
+    col.active_border = $lavender
+    col.inactive_border = $crust
+
+    layout = dwindle
+}
+#+end_src
+
+* Decoration
+- [[https://wiki.hyprland.org/Configuring/Variables][Wiki Link]]
+#+begin_src hyprlang
+decoration {
+    rounding = 10
+    drop_shadow = yes
+    shadow_range = 4
+    shadow_render_power = 3
+    col.shadow = rgba(1a1a1aee)
+}
+#+end_src
+
+* Animations
+- [[https://wiki.hyprland.org/Configuring/Animations][Wiki Link]]
+#+begin_src hyprlang
+animations {
+    enabled = yes
+    # bezier = myBezier, 0.05, 0.9, 0.1, 1.05
+    # animation = windows, 1, 7, myBezier
+    # animation = windowsOut, 1, 7, default, popin 80%
+    # animation = border, 1, 10, default
+    # animation = borderangle, 1, 8, default
+    # animation = fade, 1, 7, default
+    # animation = workspaces, 1, 6, default
+    bezier = wind, 0.05, 0.9, 0.1, 1.05
+    bezier = winIn, 0.1, 1.1, 0.1, 1.1
+    bezier = winOut, 0.3, -0.3, 0, 1
+    bezier = liner, 1, 1, 1, 1
+    animation = windows, 1, 6, wind, slide
+    animation = windowsIn, 1, 6, winIn, slide
+    animation = windowsOut, 1, 5, winOut, slide
+    animation = windowsMove, 1, 5, wind, slide
+    animation = border, 1, 1, liner
+    animation = borderangle, 1, 30, liner, loop
+    animation = fade, 1, 10, default
+    animation = workspaces, 1, 5, wind
+}
+#+end_src
+
+* Tile Layout
+- [[https://wiki.hyprland.org/Configuring/Dwindle-Layout][Dwindle - Wiki]]
+- [[https://wiki.hyprland.org/Configuring/Master-Layout][Master - Wiki]]
+#+begin_src hyprlang
+dwindle {
+    # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
+    pseudotile = yes # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
+    preserve_split = yes # you probably want this
+    force_split = 2
+}
+master {
+    # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
+    new_is_master = true
+}
+#+end_src
+
+* Gestures / Misc
+#+begin_src hyprlang
+gestures {
+    workspace_swipe = off
+}
+
+}
+misc {
+    disable_hyprland_logo = true
+}
+#+end_src
+
+* Windowrules
+- windowrule = float, ^(client)$
+- windowrulev2 = float,class:^(client)$,title:^(client)$
+#+begin_src hyprlang
+windowrule = float, title:Picture-in-Picture
+windowrule = float, title:About Mozilla Firefox
+windowrule = float, title:Library
+windowrule = float, xdg-desktop-portal-gtk
+windowrule = float, title:Friends List
+windowrule = float, title:Select external screenshots folder
+windowrule = float, net.davidotek.pupgui2
+windowrule = float, org.libretro.RetroArch
+windowrule = float, pcmanfm
+windowrule = float, pavucontrol
+windowrule = float, org.gnome.Calculator
+windowrule = float, python3
+windowrule = float, mpv
+windowrule = float, imv
+windowrule = size 1600 900, mpv
+windowrule = center, mpv
+windowrule = opacity 0.9 0.9, foot
+windowrule = opacity 0.9 0.9, pcmanfm
+windowrule = opacity 0.97 0.97, org.mozilla.firefox
+windowrule = opacity 0.94 0.94, steam
+windowrule = opacity 0.94 0.94, steamwebhelper
+windowrule = opacity 0.94 0.94, com.github.tchx84.Flatseal
+windowrule = opacity 0.94 0.94, hu.kramo.Cartridges
+windowrule = opacity 0.94 0.94, gnome-boxes
+windowrule = opacity 0.94 0.94, Signal
+windowrule = opacity 0.9 0.9, obsidian
+windowrule = opacity 0.9 0.9, Logseq
+windowrule = opacity 0.9 0.9, pavucontrol
+windowrule = opacity 0.9 0.9, org.qbittorrent.qBittorrent
+#+end_src
+
+* Hotkeys
+- [[https://wiki.hyprland.org/Configuring/Keywords][Keywords]]
+#+begin_src hyprlang
+$mod = SUPER
+
+$menu = hyprctl dispatch exec `tofi-run --font=/usr/share/fonts/JetBrains\ Mono\ Nerd\ Font/JetBrains\ Mono\ Nerd\ Font\ Bold.ttf`
+$drun = tofi-drun --font=/usr/share/fonts/JetBrains\ Mono\ Nerd\ Font/JetBrains\ Mono\ Nerd\ Font\ Bold.ttf --drun-launch=true
+bind = $mod, RETURN, exec, footclient
+bind = SUPER SHIFT, RETURN, exec, $menu
+bind = $mod, Q, killactive, 
+bind = SUPER SHIFT, Escape, exit, 
+bind = SUPER, F, fullscreen
+bind = SUPER, E, exec, pcmanfm
+bind = $mod, W, exec, flatpak run org.mozilla.firefox
+bind = $mod, SPACE, togglefloating, 
+bind = ALT, SPACE, exec, $drun
+bind = SUPER, ESCAPE, exec, $SCRIPTS/logout 2
+bind = SUPER SHIFT, P, pseudo, # dwindle
+bind = SUPER SHIFT, J, togglesplit, # dwindle
+bind =, print, exec, grim - | swappy -f -
+bind = SUPER, P, exec, grim -g "$(slurp)" - | swappy -f -
+bind = ALT, SHIFT_L, exec, $SCRIPTS/kbswitch
+bind =, XF86AudioRaiseVolume, exec, $SCRIPTS/pipewire-volume +1 && $SCRIPTS/vol-notify
+bind =, XF86AudioLowerVolume, exec, $SCRIPTS/pipewire-volume -1 && $SCRIPTS/vol-notify
+bind =, XF86AudioMute, exec, ~/.config/sway/pipewire-volume m && $SCRIPTS/mute-notify
+bind = SUPER, F1, exec, swww img -t grow --transition-bezier .43,1.19,1,.4 --transition-duration 0.7 --transition-fps 60 --invert-y --transition-pos "$( hyprctl cursorpos )" ~/Pictures/Wallpapers/rain_world1.png
+bind = SUPER, F2, exec, swww img -t grow --transition-bezier .43,1.19,1,.4 --transition-duration 0.7 --transition-fps 60 --invert-y --transition-pos "$( hyprctl cursorpos )" ~/Pictures/Wallpapers/rain_world2.png
+bind = SUPER, F3, exec, swww img -t grow --transition-bezier .43,1.19,1,.4 --transition-duration 0.7 --transition-fps 60 --invert-y --transition-pos "$( hyprctl cursorpos )" ~/Pictures/Wallpapers/rain_world3.png
+bind = SUPER, F4, exec, swww img -t grow --transition-bezier .43,1.19,1,.4 --transition-duration 0.7 --transition-fps 60 --invert-y --transition-pos "$( hyprctl cursorpos )" ~/Pictures/Wallpapers/02.png
+bind = SUPER, F5, exec, swww img -t grow --transition-bezier .43,1.19,1,.4 --transition-duration 0.7 --transition-fps 60 --invert-y --transition-pos "$( hyprctl cursorpos )" ~/Pictures/Wallpapers/digital-art-moon-wallpaper.png
+bind = SUPER, F6, exec, swww img -t grow --transition-bezier .43,1.19,1,.4 --transition-duration 0.7 --transition-fps 60 --invert-y --transition-pos "$( hyprctl cursorpos )" ~/Pictures/Wallpapers/switch_swirl.jpg
+bind = SUPER, F7, exec, swww img -t grow --transition-bezier .43,1.19,1,.4 --transition-duration 0.7 --transition-fps 60 --invert-y --transition-pos "$( hyprctl cursorpos )" ~/Pictures/Wallpapers/firewatch.jpg
+bind = SUPER, F8, exec, swww img -t grow --transition-bezier .43,1.19,1,.4 --transition-duration 0.7 --transition-fps 60 --invert-y --transition-pos "$( hyprctl cursorpos )" ~/Pictures/Wallpapers/CenterOfAttentionDark1080.png
+#bind = SUPER, F9, exec, swww img --transition-duration 0 ~/Videos/G3jW.gif
+bind = SUPER, C, exec, flatpak run org.gnome.Calculator
+bind = SUPER SHIFT, C, exec, hyprpicker | wl-copy -n
+bind = SUPER, N, exec, wlsunset -l 44.8 -L 20.5 &
+bind = SUPER SHIFT, N, exec, killall wlsunset
+bind = SUPER, K, exec, flatpak run org.keepassxc.KeePassXC
+bind = SUPER, G, exec, flatpak run hu.kramo.Cartridges
+bind = SUPER SHIFT, G, exec, $SCRIPTS/gamemode
+bind = SUPER, S, exec, steam
+bind = SUPER, A, exec, flatpak run org.localsend.localsend_app
+bind = SUPER, V, exec, clipman pick -t CUSTOM -T "tofi --prompt-text="Clipboard:" --font=/usr/share/fonts/JetBrains\ Mono\ Nerd\ Font/JetBrains\ Mono\ Nerd\ Font\ Bold.ttf"
+# Move focus with mod + arrow keys
+bind = $mod, left, movefocus, l
+bind = $mod, right, movefocus, r
+bind = $mod, up, movefocus, u
+bind = $mod, down, movefocus, d
+#+end_src
+
+* WM hotkeys
+#+begin_src hyprlang
+bind = $mod, 1, workspace, 1
+bind = $mod, 2, workspace, 2
+bind = $mod, 3, workspace, 3
+bind = $mod, 4, workspace, 4
+bind = $mod, 5, workspace, 5
+bind = $mod, 6, workspace, 6
+bind = $mod, 7, workspace, 7
+bind = $mod, 8, workspace, 8
+bind = $mod, 9, workspace, 9
+bind = $mod, 0, workspace, 10
+
+bind = $mod SHIFT, 1, movetoworkspacesilent, 1
+bind = $mod SHIFT, 2, movetoworkspacesilent, 2
+bind = $mod SHIFT, 3, movetoworkspacesilent, 3
+bind = $mod SHIFT, 4, movetoworkspacesilent, 4
+bind = $mod SHIFT, 5, movetoworkspacesilent, 5
+bind = $mod SHIFT, 6, movetoworkspacesilent, 6
+bind = $mod SHIFT, 7, movetoworkspacesilent, 7
+bind = $mod SHIFT, 8, movetoworkspacesilent, 8
+bind = $mod SHIFT, 9, movetoworkspacesilent, 9
+bind = $mod SHIFT, 0, movetoworkspacesilent, 10
+
+bind = $mod, mouse_down, workspace, e+1
+bind = $mod, mouse_up, workspace, e-1
+
+bindm = $mod, mouse:272, movewindow
+bindm = $mod, mouse:273, resizewindow
+
+bind = $mod SHIFT, H, resizeactive, -30 0
+bind = $mod SHIFT, J, resizeactive, 0 30
+bind = $mod SHIFT, K, resizeactive, 0 -30
+bind = $mod SHIFT, L, resizeactive, 30 0
+
+bind = SUPER ALT, H, movewindow, l
+bind = SUPER ALT, L, movewindow, r
+bind = SUPER ALT, K, movewindow, u
+bind = SUPER ALT, J, movewindow, d
+#+end_src
+
+* Autostart
+#+begin_src hyprlang
+windowrule = workspace 2 silent, firefox
+exec-once = flatpak run org.mozilla.firefox
+windowrule = workspace 3 silent, foot3
+exec-once = $SCRIPTS/startup
+#+end_src

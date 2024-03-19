@@ -1,0 +1,23 @@
+#!/usr/bin/env sh
+
+# Options
+c1='Aliensrock'
+c2='Grubby'
+c3='Smallant'
+
+# Run tofi
+runtofi() {
+    printf "$c1\n$c2\n$c3" | tofi --prompt-text="Twitch" --font=/usr/share/fonts/JetBrains\ Mono\ Nerd\ Font/JetBrains\ Mono\ Nerd\ Font\ Bold.ttf --padding-top=8
+}
+
+# Execute
+case $(runtofi) in
+    $c1)
+        mpv https://twitch.tv/aliensrock
+        ;;
+    $c2)
+        mpv https://twitch.tv/grubby
+        ;;
+    $c3)
+        mpv https://twitch.tv/smallant
+esac

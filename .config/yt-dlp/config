@@ -1,0 +1,10 @@
+# Best quality mp4
+ -f 'bestvideo[ext=mp4][height<=?1080]+bestaudio[ext=m4a]/best[ext=mp4]/best'
+# Embed english subtitles
+ --merge-output-format mp4
+ --sub-lang en
+ --write-auto-sub
+ --embed-subs
+ --add-chapters
+# Save in ~/Videos
+ -o '%(title)s.%(ext)s'

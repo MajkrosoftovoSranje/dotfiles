@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+sleep 1.6
+hyprctl keyword windowrule "workspace unset, firefox"
+footclient -a foot3 tmuxifier s sh

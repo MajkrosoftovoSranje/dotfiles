@@ -1,0 +1,83 @@
+{
+  "height": 50,
+  "spacing": 6,
+  "modules-left": [
+    "custom/launcher",
+    "hyprland/workspaces",
+    "temperature",
+  ],
+  "modules-center": [
+    "clock"
+  ],
+  "modules-right": [
+    "tray",
+    "wireplumber",
+    "memory",
+    "cpu",
+    "hyprland/language",
+    "network",
+    "custom/powermenu"
+  ],
+  "custom/launcher": {
+    "format": "  ",
+    "on-click": "wofi --show drun -I",
+    "tooltip": false
+  },
+  "hyprland/workspaces": {
+    "format": "{name}",
+    "on-click": "activate",
+    "disable-scroll": true
+  },
+  "wireplumber": {
+    "format": " {icon} {volume}%",
+    "format-muted": "󰖁 ",
+    "format-icons": ["", "", "󰕾"],
+    "tooltip": false
+  },
+  "clock": {
+    "on-click": "~/.config/waybar/wallpaperRand &",
+    "on-click-right": "~/.config/waybar/wallpaperLive &",
+    //"on-click-middle": "~/.config/waybar/live_wallpaper.sh &",
+    "format": "{:%I:%M %p  %A %b %d}",
+    "tooltip-format": "{:%A, %d %B %Y}\n<tt>{calendar}</tt>"
+  },
+  "memory": {
+    "interval": 5,
+    "format": "﬙ {percentage}%",
+    "format-alt": "﬙ {used}G",
+    "tooltip": false,
+    "states": {
+      "warning": 85,
+    }
+  },
+  "cpu": {
+    "interval": 5,
+    "format": " {usage}%"
+  },
+  "network": {
+    "format-ethernet": " {ifname}",
+    "format-linked": "說 (No IP)",
+    "format-disconnected": "說 Disconnected",
+    "format-alt": " {ipaddr}",
+    "tooltip": false
+  },
+  "temperature": {
+    "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+    "critical-threshold": 80,
+    "tooltip": false,
+    "format": " {temperatureC}°C"
+  },
+  "hyprland/language": {
+    "format": "{short} {variant}",
+    "on-click": "hyprctl switchxkblayout royuan-akko-multi-modes-keyboard-b next"
+  },
+  "custom/powermenu": {
+    "format": " ",
+    //"on-click": "~/.config/tofi/powermenu-hyprland",
+    "tooltip": false
+  },
+  "tray": {
+    "icon-size": 15,
+    "spacing": 5
+  },
+}

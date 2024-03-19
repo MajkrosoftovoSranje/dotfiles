@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+mute=$(pactl list sinks | grep -A 10 $(pactl info | grep "Default Sink" | cut -d " " -f3) | grep "Mute: yes")
+if [ -n "$mute" ] ; then
+    dunstify "t2" -a "Muted" "$nsink" -i $HOME/.config/dunst/icons/muted-speaker.png -r 91190 -t 800
+else
+    dunstify "t2" -a "Unmuted" "$nsink" -i $HOME/.config/dunst/icons/unmuted-speaker.png -r 91190 -t 800
+fi
