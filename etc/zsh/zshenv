@@ -1,0 +1,11 @@
+XDG_DATA_HOME=$HOME/.local/share
+XDG_CONFIG_HOME=$HOME/.config
+XDG_STATE_HOME=$HOME/.local/state
+XDG_CACHE_HOME=$HOME/.cache
+TEXMFVAR=$XDG_CACHE_HOME/texlive/texmf-var
+ZDOTDIR=$HOME/.config/zsh
+CARGO_HOME=$HOME/.config/cargo
+SSH_HOME=$HOME/.config/ssh
+GNUPGHOME=$HOME/.config/gpg
+GOPATH=$HOME/.config/go
+GOROOT=$(go env GOROOT)

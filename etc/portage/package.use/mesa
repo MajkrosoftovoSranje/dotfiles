@@ -1,0 +1,6 @@
+media-libs/mesa vulkan-overlay
+x11-libs/libdrm video_cards_radeon
+dev-libs/libclc spirv
+virtual/rust rustfmt
+dev-lang/rust rustfmt
+dev-lang/rust-bin rustfmt

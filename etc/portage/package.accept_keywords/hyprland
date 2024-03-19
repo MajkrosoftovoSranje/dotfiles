@@ -1,0 +1,14 @@
+gui-wm/hyprland ~amd64
+dev-libs/hyprland-protocols ~amd64
+dev-cpp/tomlplusplus ~amd64
+gui-apps/clipman ~amd64
+gui-apps/waybar ~amd64
+gui-apps/eww ~amd64
+gui-apps/hyprpaper ~amd64
+dev-libs/hyprlang ~amd64
+gui-apps/hyprpicker ~amd64
+gui-apps/swaylock-effects ~amd64
+gui-apps/wf-recorder ~amd64
+gui-apps/swww ~amd64
+gui-apps/wlogout ~amd64
+gui-apps/nwg-displays ~amd64

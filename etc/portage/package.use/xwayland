@@ -1,0 +1,10 @@
+media-libs/libva X
+x11-libs/cairo X
+dev-cpp/cairomm X
+media-libs/libglvnd X
+media-libs/mesa X
+media-libs/libepoxy X # for mesa
+x11-libs/pango X # for dunst
+gui-libs/wlroots X x11-backend # backend for Hyprland
+gui-wm/sway X # Xwayland for Sway
+gui-wm/hyprland X # Xwayland for Hyprland

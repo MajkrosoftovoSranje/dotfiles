@@ -1,0 +1,3 @@
+media-video/ffmpeg amf amr libass libdrm libsoxr libtesseract pulseaudio mp3 mipsfpu sdl openssl opus truetype vpx v4l x264 x265 bzip2 -cuda
+>=dev-libs/libdbusmenu-16.04.0-r2 gtk3
+>=media-libs/leptonica-1.83.1 tiff
