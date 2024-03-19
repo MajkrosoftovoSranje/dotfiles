@@ -34,7 +34,6 @@ return {
                 }
             })
             -- Mappings
-            vim.keymap.set("n", "<leader>od", function() vim.api.nvim_set_current_dir(vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ':h')) end, { silent = true })
             vim.keymap.set("n", "<F2>", "i#+PROPERTY: header-args :tangle ", { silent = true })
             vim.keymap.set("n", "<leader>os", "i#+BEGIN_SRC <CR>#+END_SRC<esc>k$a", { silent = true })
             vim.keymap.set("n", "<leader>og", "<CMD>!logseq > /dev/null 2>&1<CR>", {silent = true})
