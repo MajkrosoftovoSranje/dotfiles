@@ -1,3 +1,3 @@
-#title: dotfiles
+#+TITLE: dotfiles
 
 * Gentoo/Hyprland dotfiles
