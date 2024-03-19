@@ -97,6 +97,7 @@ return {
         "ranjithshegde/orgWiki.nvim",
         keys = "<leader>ow",
         config = function()
+            vim.keymap.set("n", "<leader>ow", "<CMD>lua print('orgWiki loaded')<CR>", { silent = true })
             require("orgWiki").setup {
                 wiki_path = { "~/Documents/Notes/pages/" },
                 diary_path = "~/Documents/Notes/journals/",
