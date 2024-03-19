@@ -95,12 +95,13 @@ return {
     },
     {
         "ranjithshegde/orgWiki.nvim",
+        keys = "<leader>ow",
         config = function()
-            -- vim.keymap.set("n", "<leader>ow", "<CMD>lua require('orgWiki').setup({wiki_path = { '~/Documents/Notes/pages/' }, diary_path = '~/Documents/Notes/joutnals/'})")
-            -- require("orgWiki").setup {
-            --     wiki_path = { "~/Documents/Notes/pages/" },
-            --     diary_path = "~/Documents/Notes/journals/",
-            -- }
+            vim.keymap.set("n", "<leader>ow", "<CMD>lua require('orgWiki').setup({wiki_path = { '~/Documents/Notes/pages/' }, diary_path = '~/Documents/Notes/joutnals/'})")
+            require("orgWiki").setup {
+                wiki_path = { "~/Documents/Notes/pages/" },
+                diary_path = "~/Documents/Notes/journals/",
+            }
         end
     },
     {
